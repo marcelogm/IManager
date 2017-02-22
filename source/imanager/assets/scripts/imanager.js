@@ -81,7 +81,6 @@ $('body').on('click', '.image', function (ev) {
 // Responsável por iniciar um modal com a imagem em tamanho grande.
 //
 $('body').on('click', '.overlay', function (ev) {
-
     showMessage('<img src="' + $('.image-info-display #path').val() + '" style="max-width: 100%;" />');
 });
 
@@ -157,7 +156,6 @@ $('body').on('click', '#btn-img-edit', function (ev) {
 // Mostra o feedback da edição.
 //
 $('body').on('click', '#btn-img-edit-confirm', function (ev) {
-    $('#feedback-modal').modal('hide');
     var data = requestForm('edit-image');
     data['implugin-id'] = $('#implugin-selected').val();
     data['implugin-name'] = $('#edit-image-name').val();
@@ -166,6 +164,27 @@ $('body').on('click', '#btn-img-edit-confirm', function (ev) {
     $('.image-info-footer').fadeOut(500);
 });
 
+//
+// Evento de digitação no formulário de edição
+// 
+// Caso digite ENTER, envia o formulário
+//
+$('body').on('keypress', '#edit-image-name', function (ev) {
+    if (ev.which == 13) {
+        ev.preventDefault();
+        $('#btn-img-edit-confirm').click();
+        return;
+    }
+});
+
+//
+// Evento que mostra modal
+//
+// Da foco para input que possua a tag autofocus
+//
+$('#feedback-modal').on('shown.bs.modal', function () {
+    $(this).find('[autofocus]').focus();
+});
 //
 // Evento de click na opção de exclusão 
 //
@@ -187,7 +206,6 @@ $('body').on('click', '#btn-img-delete', function (ev) {
 // Mostra o feedback da exclusão.
 //
 $('body').on('click', '#btn-img-delete-confirm', function (ev) {
-    $('#feedback-modal').modal('hide');
     var data = requestForm('delete-image');
     data['implugin-id'] = $('#implugin-selected').val();
     data['implugin-confirm-action'] = true;
@@ -207,8 +225,7 @@ $('body').on('files.bs.filedialog', function (ev) {
     data.append('implugin-selected-action', 'upload-image');
     $.each(ev.files, function (i, file) {
         data.append('implugin-file-' + i, file);
-    })
-    var response_data = requestForm('')
+    });
     sendFormMultipart(data, '.image-panel', 'load-image-list', ev);
 });
 
@@ -436,21 +453,9 @@ function loadModal(data, loading_bar) {
 // Mostra o modal de Feedback
 //
 function showMessage(message) {
-    hideMessage();
     $('#feedback-modal-content').html(message);
     $('#feedback-modal').modal('show');
 }
-
-//
-// Esconde modal de Feedback
-//
-function hideMessage()
-{
-    $('#feedback-modal').modal('hide');
-    $('body').removeClass('modal-open');
-    $('.modal-backdrop').remove();
-}
-
 //
 // Mostra barra de carregamento 
 //

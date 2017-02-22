@@ -203,7 +203,7 @@ class IMPlugin
 			}
 			else if ($confirmation && $this->edit($id, $name))
 			{
-				$data = ['title' => 'Imagem excluída.', 'body' => 'A imagem foi excluída com sucesso.'];
+				$data = ['title' => 'Imagem renomeada.', 'body' => 'A imagem foi renomeada com sucesso.'];
 			}
 			else
 			{
@@ -368,7 +368,7 @@ class IMPlugin
 			$file_source = IMPLUGIN_BASE_PATH . $this->directories['base_dir'] . $image->path . '.' . $image->type;
 			$thumb_source = IMPLUGIN_BASE_PATH . $this->directories['thumb_dir'] . $image->path . '.' . $image->type;
 			$thumb_destination = IMPLUGIN_BASE_PATH . $this->directories['thumb_dir'] . $file_name . '.' . $image->type;
-			// Gera o link físico no diretório
+			// Gera o link físico no diretório (se for possível)
 			$this->link($file_source, $destination . '.' . $image->type);
 			$this->link($thumb_source, $thumb_destination);
 		}
@@ -501,20 +501,15 @@ class IMPlugin
 	 */
 	private function link($source, $target)
 	{
-		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			if(function_exists('link'))
-			{
-				link($source, $target);
-				return $target;
-			}
+		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' && function_exists('link')) {
+			link($source, $target);
+		} else if (function_exists('shell_exec')){
+			shell_exec('ln ' . $source . ' ' . $target);
 		} else {
-			if(function_exists('shell_exec'))
-			{
-				shell_exec('ln ' . $source . ' ' . $target);
-				return $target;
-			}
+			copy($source, $target);
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	/**

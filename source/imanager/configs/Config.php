@@ -19,12 +19,10 @@ class Config
 	{
 		$secret_key = hash('sha256', 'change_it');
 		return [
-			// @todo criar flag "safe" onde executa a validação dos campos de Config,
-			// atualmente a verificação é feia SEMPRE, isso pode resultar em perda perfomance.
 			// O Plugin está em desenvolvimento? Default: false
 			'debug' => true,
-			// Caminho relativo do gerenciador na aplicação. Default: 'app\\plugins\\sources\\'
-			'path' => '/IManager/source/',
+			// Caminho relativo do gerenciador na aplicação. Default: 'app/plugins/sources/'
+			'path' => 'imanager/source/',
 			// Palavra secreta utilizada para verificar autenticidade da requisição Default: hash('sha256', 'implugin')
 			'secret_key' => $secret_key,
 			// Randomizar nome das imagens? Default: false
@@ -41,14 +39,30 @@ class Config
 			// Default: function () { return true; }
 			'auth_callback' => function()
 			{
-				return true;
+				$name = hash('sha256', 'CustomSession' .
+					$_SERVER['REMOTE_ADDR'] .
+					$_SERVER['HTTP_USER_AGENT']);
+				session_name($name);
+				session_cache_expire(10);
+				if (session_status() == PHP_SESSION_NONE) {
+					session_start();
+				}
+				return isset( $_SESSION['uid']);
 			},
 			// Callback de id de usuário
 			// Permite atribuir a autoria de uma imagem a um ID de um usuário
 			// Default: function () { return 0; }
 			'user_id_callback' => function()
 			{
-				return true;
+				$name = hash('sha256', 'CustomSession' .
+					$_SERVER['REMOTE_ADDR'] .
+					$_SERVER['HTTP_USER_AGENT']);
+				session_name($name);
+				session_cache_expire(10);
+				if (session_status() == PHP_SESSION_NONE) {
+					session_start();
+				}
+				return $_SESSION['uid'];
 			},
 			// Configurações das imagens
 			'image' => [
@@ -109,6 +123,7 @@ class Config
 			'dbname' => '',
 			'username' => '',
 			'password' => '',
+		    'create_table' => true
 		];
 	}
 

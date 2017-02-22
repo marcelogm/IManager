@@ -9,19 +9,25 @@ use IManager\Utils\Helpers;
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?= Helpers::link_favicon('favicon.ico'); ?>
-	<title>IManager </title>
+	<title> IManager </title>
 
+	<!-- BOOSTRAP -->
 	<?= Helpers::link_css('bootstrap.min.css'); ?>
 	<?= Helpers::link_css('bootstrap.fd.css'); ?>
+    <!-- IMANAGER CSS -->
 	<?= Helpers::link_css('imanager.css'); ?>
 </head>
 <body>
+	<!-- IMPLUGIN DATA FORM -->
 	<div>
 		<input id="implugin-secret-key" name="implugin-secret-key" value="<?= $secret ?>" hidden />
 		<input id="implugin-base-path" value="<?= IMPLUGIN_BASE_URL ?>" hidden />
 		<input id="implugin-offset" value="0" hidden />
-		<input id="implugin-selected" value="0" hidden />
-	</div>
+        <input id="implugin-selected" value="0" hidden />
+	</div>    
+	<!-- FIM DO IMPLUGIN DATA FORM -->
+
+	<!-- CIRCULO DE CARREGAMENTO -->
 	<div class="loading">
 		<div class="sk-cube-grid">
 			<div class="sk-cube sk-cube1"></div>
@@ -35,6 +41,9 @@ use IManager\Utils\Helpers;
 			<div class="sk-cube sk-cube9"></div>
 		</div>
 	</div>
+	<!-- FIM DO CIRCULO DE CARREGAMENTO -->
+
+	<!-- MODAL DE FEEDBACK -->
 	<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content" id="feedback-modal-content">
@@ -42,6 +51,9 @@ use IManager\Utils\Helpers;
 			</div>
 		</div>
 	</div>
+	<!-- FIM DO MODAL DE FEEDBACK -->
+
+	<!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
 	<div class="container-fluid">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
@@ -76,67 +88,92 @@ use IManager\Utils\Helpers;
 			</div>
 		</nav>
 	</div>
+	<!-- FIM DA BARRA DE NAVEGAÇÃO SUPERIOR -->
+
+	<!-- PAINEL DE IMAGEM -->
 	<div class="row container-fluid image-panel"></div>
+	<!-- FIM DO PAINEL DE IMAGEM -->
+
+	<!-- BARRA DE NAVEGAÇÃO INFERIOR -->
 	<footer class="image-info-footer" id="footer" hidden>
 		<div class="container-fluid image-info-display">
+			<!-- PRÉ-VISUALIZAÇÃO DE IMAGEM -->
 			<div class="col-md-2 visible-lg image-wrapper">
 				<img src="#" class="image-info-gallery" alt="Imagem de demonstração" />
 				<div class="overlay">
 					<h4>
-						<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span> 
 						Clique para ampliar.
 					</h4>
 				</div>
 			</div>
+			<!-- FIM DA PRÉ-VISUALIZAÇÃO DE IMAGEM -->
+			<!-- PRÉ-VISUALIZAÇÃO DE INFORMAÇÕES -->
 			<div class="col-md-10" style="">
+				<!-- NOME DO ARQUIVO -->
 				<h3 class="text-muted">
 					<span id="name"></span>
 				</h3>
+                <!-- FIM DO NOME DO ARQUIVO -->
 				<p>
+					<!-- TIPO DO ARQUIVO -->
 					<strong>
 						<span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
 						Arquivo
 					</strong>
 					<span id="type"></span>&nbsp;&nbsp;
+					<!-- FIM DO TIPO DO ARQUIVO -->
+					<!-- DATA DE CRIAÇÃO DO ARQUIVO -->
 					<strong>
 						<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
 						Criado em
 					</strong>
 					<span id="created"></span>&nbsp;&nbsp;
+					<!-- FIM DA DATA DE CRIAÇÃO DO ARQUIVO -->
+                    <!-- TAMANHO TOTAL DO ARQUIVO -->
 					<strong>
-						<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> 
 						Tamanho:
 					</strong>
 					<span id="size"></span>&nbsp;&nbsp;
-					<strong>
-						<span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+					<!-- FIM DO TAMANHO TOTAL DO ARQUIVO -->
+                    <!-- DIMENSÕES TOTAIS DO ARQUIVO -->
+                    <strong>
+						<span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span> 
 						Dimensões:
-					</strong>
-					<span id="dimensions"></span>
+                    </strong>
+                    <span id="dimensions"></span>
+                    <!-- FIM DAS DIMENSÕES TOTAIS DO ARQUIVO -->
 					<br />
+					<!-- OPÇÕES -->
 					<div class="form-inline">
+                        <!-- SELECIONAR -->
 						<div class="input-group">
 							<a class="btn btn-success" id="btn-img-select" href="#">
 								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 								Selecionar
 							</a>
 						</div>
+                        <!-- EDITAR -->
 						<div class="input-group">
 							<a class="btn btn-default" id="btn-img-edit" href="#">
 								Renomear
 							</a>
 						</div>
+                        <!-- EXCLUIR -->
 						<div class="input-group">
 							<a class="btn btn-default" id="btn-img-delete" href="#">
 								Excluir
 							</a>
 						</div>
+						<!-- DOWNLOAD -->
 						<div class="input-group">
 							<a class="btn btn-primary" id="btn-img-download" href="#" download="">
 								<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
 								Download
 							</a>
 						</div>
+                        <!-- LINK -->
 						<div class="input-group">
 							<div class="input-group-addon">
 								<strong class="visible-lg">
@@ -147,8 +184,10 @@ use IManager\Utils\Helpers;
 							<input type="text" class="form-control" id="path" readonly />
 						</div>
 					</div>
+					<!-- FIM DAS OPÇÕES -->
 				</p>
 			</div>
+			<!-- FIM DA PRÉ-VISUALIZAÇÃO DE INFORMAÇÕES -->
 		</div>
 	</footer>
 

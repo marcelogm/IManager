@@ -28,7 +28,7 @@ class Helpers
 			// Definido para http://ufrgs.br/cacln
 			$protocol = 'https://';
 		}
-		return $protocol . $hostname . $configs['path'] . '/';
+		return $protocol . $hostname . '/' . $configs['path'] . '/';
 	}
 
 	/**
@@ -149,7 +149,7 @@ class Helpers
 
 	/**
 	 * Gera um nome aleatório no formato de HASH SHA256
-	 * @param mixed $from 
+	 * @param mixed $from
 	 * @return string
 	 */
 	public static function random_name($from)
@@ -159,7 +159,7 @@ class Helpers
 
 	/**
 	 * Validador de informações de configuração
-	 * 
+	 *
 	 * Função utilziada para facilitar a execução do programa, verificando e
 	 * e gerando (se necessário) os valores padrões para que o plugin funcione corretamente
 	 *
@@ -172,7 +172,7 @@ class Helpers
 		if(is_array($config))
 		{
 			$config['debug'] = self::is_set_in($config, 'debug');
-			$config['path'] = self::is_set_in($config, 'path', 'app\\plugins\\sources\\');
+			$config['path'] = self::is_set_in($config, 'path', 'app/plugins/sources/');
 			$config['secret_key'] = self::is_set_in($config, 'secret_key', hash('sha256', 'implugin'));
 			$config['random_name'] = self::is_set_in($config, 'random_name');
 			$config['file_max_size'] = self::is_set_in($config, 'file_max_size', 4194304);
@@ -245,7 +245,7 @@ class Helpers
 	 * @param mixed $value array
 	 * @param mixed $key indice dentro desse array
 	 * @param mixed $default valor padrão
-	 * @param mixed $callback função extra de validação 
+	 * @param mixed $callback função extra de validação
 	 * @return mixed reposta
 	 */
 	public static function is_set_in($value, $key, $default = false, $callback = null)

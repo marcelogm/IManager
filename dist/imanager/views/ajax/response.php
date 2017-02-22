@@ -3,11 +3,11 @@ namespace IManager\Views\Ajax;
 ?>
 
 <?php if($message): ?>
-<div class="container">
-	<div class="alert alert-danger" role="alert">
-		<?= $message ?>
+	<div class="container">
+		<div class="alert alert-danger" role="alert">
+			<?= $message ?>
+		</div>
 	</div>
-</div>
 <?php endif; ?>
 
 <div class="modal-header">

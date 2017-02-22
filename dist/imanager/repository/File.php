@@ -82,6 +82,7 @@ class File
 		}
 		catch(\Exception $e)
 		{
+			echo $e;
 			return false;
 		}
 	}

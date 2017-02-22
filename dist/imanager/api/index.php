@@ -2,16 +2,16 @@
 namespace IManager\API;
 use IManager\IMPlugin;
 
-include('..\IMPlugin.php');
+include('../IMPlugin.php');
 
 /**
-* Porque chamar esse método antes de executar?
+* Porque chamar esse mÃ©todo antes de executar?
 *
-* Quando surgiu a necessidade de responder requisições Ajax 
-* vindas da frontend, fez-se necessário dotar o pluhin de capacidade
-* de tratamento de requisições e importação de classes independetes do PurePHP. 
-* Sendo assim, é necessário registrar um autoloader próprio do IManager
-* para que a execução possa ocorrer utilizando o sistema de namespace mesmo sem
+* Quando surgiu a necessidade de responder requisiÃ§Ãµes Ajax 
+* vindas da frontend, fez-se necessÃ¡rio dotar o pluhin de capacidade
+* de tratamento de requisiÃ§Ãµes e importaÃ§Ã£o de classes independetes do PurePHP. 
+* Sendo assim, Ã© necessÃ¡rio registrar um autoloader prÃ³prio do IManager
+* para que a execuÃ§Ã£o possa ocorrer utilizando o sistema de namespace mesmo sem
 * um framework gerenciando isso.
 */
 IMPlugin::autoloader_registration();
