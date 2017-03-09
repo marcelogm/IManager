@@ -9,7 +9,6 @@ namespace IManager\Configs;
  */
 class Config
 {
-
 	/**
 	 * Método que retorna as principais informações e configurações
 	 * utilizadas ao longo do plugin.
@@ -39,30 +38,14 @@ class Config
 			// Default: function () { return true; }
 			'auth_callback' => function()
 			{
-				$name = hash('sha256', 'CustomSession' .
-					$_SERVER['REMOTE_ADDR'] .
-					$_SERVER['HTTP_USER_AGENT']);
-				session_name($name);
-				session_cache_expire(10);
-				if (session_status() == PHP_SESSION_NONE) {
-					session_start();
-				}
-				return isset( $_SESSION['uid']);
+				return true;
 			},
 			// Callback de id de usuário
 			// Permite atribuir a autoria de uma imagem a um ID de um usuário
 			// Default: function () { return 0; }
 			'user_id_callback' => function()
 			{
-				$name = hash('sha256', 'CustomSession' .
-					$_SERVER['REMOTE_ADDR'] .
-					$_SERVER['HTTP_USER_AGENT']);
-				session_name($name);
-				session_cache_expire(10);
-				if (session_status() == PHP_SESSION_NONE) {
-					session_start();
-				}
-				return $_SESSION['uid'];
+				return 0;
 			},
 			// Configurações das imagens
 			'image' => [
@@ -126,5 +109,4 @@ class Config
 		    'create_table' => true
 		];
 	}
-
 }

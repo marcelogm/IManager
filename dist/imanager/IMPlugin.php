@@ -240,7 +240,7 @@ class IMPlugin
 		}
 
 		if ($images) {
-			foreach($images as &$image)
+			foreach($images as $image)
 			{
 				$image->url = IMPLUGIN_BASE_URL . 'imanager/' . $this->directories['base_dir'] . $image->path . '.' . $image->type;
 				$image->thumb = IMPLUGIN_BASE_URL . 'imanager/' . $this->directories['thumb_dir'] . $image->path . '.' . $image->type;
