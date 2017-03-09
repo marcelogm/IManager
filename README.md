@@ -17,7 +17,7 @@ IMPlugin::autoloader_registration();
 $manager = new IMPlugin();
 $manager->browse();
 ```
-4.	Para integrar ao CKEditor, modifique script de inicialização do editor:
+**Para integrar ao CKEditor, modifique script de inicialização do editor:**
 ```js
 CKEDITOR.replace(‘editor’, {
   filebrowserBrowseUrl: 'http://domain.com/imanager/index.php',
@@ -60,7 +60,7 @@ class ImageController extends Controller
 	}
 }
 ```
-5.	Para integrar ao CKEditor, modifique script de inicialização do editor, conforme:
+**Para integrar ao CKEditor, modifique script de inicialização do editor, conforme:**
 ```js
 CKEDITOR.replace(‘editor’, {
   filebrowserBrowseUrl: '<?= DynamicHtml::link_to('image/browse') ?>',
