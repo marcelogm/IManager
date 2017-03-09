@@ -7,9 +7,9 @@ O IManager é um plugin de gerenciamento de imagens para uso em aplicações de 
 
 ##Como utilizar
 
-1.	Fazer o download do arquivo imanager-dist-1.0.2.zip e descompactar.
-2.	Mover o conteúdo da pasta dist caminho que o plugin responderá.
-3.  Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
+1.	Fazer o download do arquivo *imanager-dist-1.0.2.7z* e descompactar.
+2.	Mover o conteúdo da pasta *dist* para o diretório que o plugin estará acessível.
+3.  	Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
 4.	Caso utilize algum framework, pode-se utilizar a método de auto carregamento na rota desejada:
 ```php
 include('imanager\IMPlugin.php');
@@ -25,11 +25,12 @@ CKEDITOR.replace(‘editor’, {
   filebrowserWindowHeight: '800'
 });
 ```
-##Caso utilize o framework PurePHP:
+##Caso utilize o Framework PurePHP:
 
 1.	Mover o conteúdo de *dist\imanager* para *app\plugins\sources\imanager*, dentro da estrutura de pastas do framework.
-2.	Fazer o download do arquivo imanager-purephp e descompactar em app\plugins.
-3.	Crie uma instancia do gerenciador de imagem em uma rota, conforme exemplo abaixo:
+2.	Fazer o download do arquivo *imanager-purephp.7z* e descompactar em *app\plugins*.
+3.  	Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
+4.	Crie uma instancia do gerenciador de imagem em uma rota, conforme exemplo abaixo:
 ```php
 <?php
 namespace App\Controllers;
@@ -59,12 +60,12 @@ class ImageController extends Controller
 	}
 }
 ```
-4.	Para integrar ao CKEditor, modifique script de inicialização do editor, conforme:
+5.	Para integrar ao CKEditor, modifique script de inicialização do editor, conforme:
 ```js
 CKEDITOR.replace(‘editor’, {
   filebrowserBrowseUrl: '<?= DynamicHtml::link_to('image/browse') ?>',
   filebrowserWindowWidth: '1250',
-	filebrowserWindowHeight: '800'
+  filebrowserWindowHeight: '800'
 });
 ```
-Obs.: em filebrowserBrowseUrl coloque a URL a qual o plugin estará acessível.
+Obs.: em *filebrowserBrowseUrl* coloque a URL a qual o plugin estará acessível.
