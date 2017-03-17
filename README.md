@@ -3,14 +3,14 @@ Gerenciador de imagens para CKEditor
 
 O IManager é um plugin de gerenciamento de imagens para uso em aplicações de pequeno porte.
 
-##Vantagens (Em edição)
+## Vantagens (Em edição)
 
-##Como utilizar
+## Como utilizar
 
-1.	Fazer o download do arquivo *imanager-dist-1.0.2.7z* e descompactar.
-2.	Mover o conteúdo da pasta *dist* para o diretório que o plugin estará acessível.
-3.  	Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
-4.	Caso utilize algum framework, pode-se utilizar a método de auto carregamento na rota desejada:
+1. Fazer o download do arquivo *imanager-dist-1.0.2.7z* e descompactar.
+2. Mover o conteúdo da pasta *dist* para o diretório que o plugin estará acessível.
+3. Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
+4. Caso utilize algum framework, pode-se utilizar a método de auto carregamento na rota desejada:
 ```php
 include('imanager\IMPlugin.php');
 IMPlugin::autoloader_registration();
@@ -27,10 +27,10 @@ CKEDITOR.replace(‘editor’, {
 ```
 ##Caso utilize o Framework PurePHP:
 
-1.	Mover o conteúdo de *dist\imanager* para *app\plugins\sources\imanager*, dentro da estrutura de pastas do framework.
-2.	Fazer o download do arquivo *imanager-purephp.7z* e descompactar em *app\plugins*.
-3.  	Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
-4.	Crie uma instancia do gerenciador de imagem em uma rota, conforme exemplo abaixo:
+1. Mover o conteúdo de *dist\imanager* para *app\plugins\sources\imanager*, dentro da estrutura de pastas do framework.
+2. Fazer o download do arquivo *imanager-purephp.7z* e descompactar em *app\plugins*.
+3. Faça as modificações desejadas no arquivo de configuração presente em *imanager\configs\Config.php*.
+4. Crie uma instancia do gerenciador de imagem em uma rota, conforme exemplo abaixo:
 ```php
 <?php
 namespace App\Controllers;
