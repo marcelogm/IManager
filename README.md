@@ -25,7 +25,7 @@ CKEDITOR.replace(‘editor’, {
   filebrowserWindowHeight: '800'
 });
 ```
-##Caso utilize o Framework PurePHP:
+## Caso utilize o Framework PurePHP:
 
 1. Mover o conteúdo de *dist\imanager* para *app\plugins\sources\imanager*, dentro da estrutura de pastas do framework.
 2. Fazer o download do arquivo *imanager-purephp.7z* e descompactar em *app\plugins*.
